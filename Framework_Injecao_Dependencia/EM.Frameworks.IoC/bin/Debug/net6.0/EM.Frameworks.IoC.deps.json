@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "EM.Frameworks.IoC/1.0.0": {
+        "runtime": {
+          "EM.Frameworks.IoC.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "EM.Frameworks.IoC/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
