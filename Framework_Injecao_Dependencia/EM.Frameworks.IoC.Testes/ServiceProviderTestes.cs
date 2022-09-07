@@ -96,6 +96,8 @@ public class ServiceProviderTestes
         servico.ServiceA.Should().NotBeNull();
         servico.ServiceB.Should().NotBeNull();
         servico.ServiceC.Should().NotBeNull();
+        servico.ServiceC.ServiceA.Should().NotBeNull();
+        servico.ServiceC.ServiceB.Should().NotBeNull();
     }
 
     [Fact]
