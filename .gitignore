@@ -5,4 +5,5 @@
 /FrameWord_Injecao_Dependencia/.vs
 /FrameWord_Injecao_Dependencia/EM.Frameworks.IoC/bin/Debug/net6.0
 /FrameWord_Injecao_Dependencia/EM.Frameworks.IoC/obj
-/FrameWord_Injecao_Dependencia/EM.Frameworks.IoC.Testes
+/FrameWord_Injecao_Dependencia/EM.Frameworks.IoC.Testes/bin
+/FrameWord_Injecao_Dependencia/EM.Frameworks.IoC.Testes/obj
