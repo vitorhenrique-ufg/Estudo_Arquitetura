@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/FrameWord_Injecao_Dependencia/.vs
+/FrameWord_Injecao_Dependencia/EM.Frameworks.IoC/bin/Debug/net6.0
+/FrameWord_Injecao_Dependencia/EM.Frameworks.IoC/obj
+/FrameWord_Injecao_Dependencia/EM.Frameworks.IoC.Testes

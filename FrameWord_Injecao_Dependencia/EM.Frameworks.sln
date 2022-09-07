@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.32804.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EM.Frameworks.IoC", "EM.Frameworks.IoC\EM.Frameworks.IoC.csproj", "{A9D4F902-2937-494D-A37D-08D7965F3E6C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EM.Frameworks.IoC.Testes", "EM.Frameworks.IoC.Testes\EM.Frameworks.IoC.Testes.csproj", "{4D55218C-05EB-4D3D-B49E-673AB8908CDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9D4F902-2937-494D-A37D-08D7965F3E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D4F902-2937-494D-A37D-08D7965F3E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D4F902-2937-494D-A37D-08D7965F3E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D4F902-2937-494D-A37D-08D7965F3E6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D55218C-05EB-4D3D-B49E-673AB8908CDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D55218C-05EB-4D3D-B49E-673AB8908CDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D55218C-05EB-4D3D-B49E-673AB8908CDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D55218C-05EB-4D3D-B49E-673AB8908CDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7A51550-CA82-4C66-972B-6931DF6F4CEF}
+	EndGlobalSection
+EndGlobal
