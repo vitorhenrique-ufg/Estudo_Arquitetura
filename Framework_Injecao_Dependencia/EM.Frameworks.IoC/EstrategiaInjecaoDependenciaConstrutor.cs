@@ -4,7 +4,7 @@ namespace EM.Frameworks.IoC
 {
     public class EstrategiaInjecaoDependenciaConstrutor : IEstrategiaInjecaoDependencia
     {
-        public void Execute(ref Dictionary<string, object> mapaDeInstancia, string key, Type type)
+        public void Execute(ref Dictionary<Type, object> mapaDeInstancia, Type key, Type type)
         {
             ConstructorInfo construtorComParametros = type.GetConstructors()[0];
             ParameterInfo[] parametrosConstrutor = construtorComParametros.GetParameters();
@@ -13,7 +13,7 @@ namespace EM.Frameworks.IoC
 
             foreach (ParameterInfo parametro in parametrosConstrutor)
             {
-                if (!mapaDeInstancia.TryGetValue(parametro.ParameterType.Name, out object? instanciaEncontrada))
+                if (!mapaDeInstancia.TryGetValue(parametro.ParameterType, out object? instanciaEncontrada))
                 {
                     throw new Exception("Não foi possível encontrar a dependencia de um dos parametros");
                 }

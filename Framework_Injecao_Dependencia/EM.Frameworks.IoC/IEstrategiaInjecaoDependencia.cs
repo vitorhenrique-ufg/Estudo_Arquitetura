@@ -4,6 +4,6 @@ namespace EM.Frameworks.IoC
 {
     public interface IEstrategiaInjecaoDependencia
     {
-        public void Execute(ref Dictionary<string, object> mapaDeInstancia, string key, Type type);
+        public void Execute(ref Dictionary<Type, object> mapaDeInstancia, Type key, Type type);
     }
 }

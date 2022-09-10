@@ -123,4 +123,20 @@ public class ServiceProviderTestes
 
         Assert.Throws<Exception>(() => builder.Build());
     }
+
+    [Fact]
+    public void Deve_Injetar_Dependencia_Atraves_De_Funcao()
+    {
+        ServiceProviderBuilder builder = new();
+
+        builder
+            .Register<IServiceA, ServiceA>()
+            .Register<IServiceC>((sp) => new ServiceC(sp.GetService<IServiceA>()));
+
+        IServiceProvider serviceProvider = builder.Build();
+
+        IServiceC servico = serviceProvider.GetService<IServiceC>();
+
+        servico.ServiceA.Should().NotBeNull();
+    }
 }

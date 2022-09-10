@@ -14,29 +14,42 @@ public class ServiceProviderBuilder
     /// Api fluente
     /// </returns>
 
-    private readonly Dictionary<string, Type> _mapaDeRegistrosInstancia = new();
-    private Dictionary<string, object> mapaDeInstancia = new();
+    private readonly Dictionary<Type, Type> _mapaDeRegistrosInstancia = new();
+    private readonly Dictionary<Type, Delegate> _mapaDeRegistrosInstanciaPorFuncao = new();
+    private Dictionary<Type, object> mapaDeInstancia = new();
     private readonly IEstrategiaInjecaoDependencia _estrategiaConstrutor = new EstrategiaInjecaoDependenciaConstrutor();
     private readonly IEstrategiaInjecaoDependencia _estrategiaConstrutorSemParametros = new EstrategiaInjecaoDependenciaConstrutorSemParametros();
     private readonly IEstrategiaInjecaoDependencia _estrategiaPropriedade = new EstrategiaInjecaoDependenciaPropriedade();
 
     public ServiceProviderBuilder Register<TInterface, TImplementacao>()  where TImplementacao : TInterface
     {
-        _mapaDeRegistrosInstancia.Add(typeof(TInterface).Name, typeof(TImplementacao));
+        _mapaDeRegistrosInstancia.Add(typeof(TInterface), typeof(TImplementacao));
         return this;
+    }
+
+    public void Register<TInterface>(Func<IServiceProvider, TInterface> value)
+    {
+        _mapaDeRegistrosInstanciaPorFuncao.Add(typeof(TInterface), value);
     }
 
     public IServiceProvider Build()
     {
-        foreach(KeyValuePair<string, Type> registroInstancia in _mapaDeRegistrosInstancia)
+        foreach(KeyValuePair<Type, Type> registroInstancia in _mapaDeRegistrosInstancia)
         {
             ExecuteInjecaoDependencia(registroInstancia.Key, registroInstancia.Value);
         }
 
-        return new ServiceProviderDefault(mapaDeInstancia);
+        ServiceProviderDefault serviceProvider = new(mapaDeInstancia);
+
+        if (_mapaDeRegistrosInstanciaPorFuncao.Any())
+        {
+            ExecuteInjecaoDependenciaPorFuncao(serviceProvider);
+        }
+
+        return serviceProvider;
     }
 
-    public void ExecuteInjecaoDependencia(string key, Type type)
+    private void ExecuteInjecaoDependencia(Type key, Type type)
     {
         if (UtilitariosInjecaoDependencia.EhInjecaoPorConstrutorSemParametro(type))
         {
@@ -49,5 +62,17 @@ public class ServiceProviderBuilder
         }
         
         _estrategiaPropriedade.Execute(ref mapaDeInstancia, key, type);
+    }
+
+    private void ExecuteInjecaoDependenciaPorFuncao(ServiceProviderDefault serviceProvider)
+    {
+        foreach (KeyValuePair<Type, Delegate> registroInstancia in _mapaDeRegistrosInstanciaPorFuncao)
+        {
+            object? objetoInstanciadoPorFuncao = registroInstancia.Value.DynamicInvoke(serviceProvider);
+            if (objetoInstanciadoPorFuncao is not null)
+            {
+                mapaDeInstancia.Add(registroInstancia.Key, objetoInstanciadoPorFuncao);
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@ namespace EM.Frameworks.IoC
 {
     public class EstrategiaInjecaoDependenciaPropriedade : IEstrategiaInjecaoDependencia
     {
-        public void Execute(ref Dictionary<string, object> mapaDeInstancia, string key, Type type)
+        public void Execute(ref Dictionary<Type, object> mapaDeInstancia, Type key, Type type)
         {
             IEnumerable<PropertyInfo> propriedadesSetter = (from propriedade in type.GetProperties()
                                                             from acessor in propriedade.GetAccessors()
@@ -16,7 +16,7 @@ namespace EM.Frameworks.IoC
                 dynamic implementacaoType = mapaDeInstancia.First(m => Equals(m.Key, key)).Value;
                 foreach (PropertyInfo propriedadeSetter in propriedadesSetter)
                 {
-                    KeyValuePair<string, object> instancia = mapaDeInstancia.FirstOrDefault(m => Equals(m.Key, propriedadeSetter.PropertyType.Name));
+                    KeyValuePair<Type, object> instancia = mapaDeInstancia.FirstOrDefault(m => Equals(m.Key, propriedadeSetter.PropertyType));
                     if (instancia.Value is null)
                     {
                         throw new Exception("Não foi possível encontrar a dependencia de um dos parametros");
