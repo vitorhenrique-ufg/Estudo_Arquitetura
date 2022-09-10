@@ -15,8 +15,9 @@ public class ServiceProviderBuilder
     /// </returns>
 
     private readonly Dictionary<Type, Type> _mapaDeRegistrosInstancia = new();
-    private readonly Dictionary<Type, Delegate> _mapaDeRegistrosInstanciaPorFuncao = new();
     private Dictionary<Type, object> mapaDeInstancia = new();
+
+    private readonly Dictionary<Type, Delegate> _mapaDeRegistrosInstanciaPorFuncao = new();
     private readonly IEstrategiaInjecaoDependencia _estrategiaConstrutor = new EstrategiaInjecaoDependenciaConstrutor();
     private readonly IEstrategiaInjecaoDependencia _estrategiaConstrutorSemParametros = new EstrategiaInjecaoDependenciaConstrutorSemParametros();
     private readonly IEstrategiaInjecaoDependencia _estrategiaPropriedade = new EstrategiaInjecaoDependenciaPropriedade();

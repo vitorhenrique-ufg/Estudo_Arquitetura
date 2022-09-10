@@ -25,7 +25,7 @@ namespace EM.Frameworks.IoC
                     PropertyInfo? propriedade = type.GetProperty(propriedadeSetter.Name);
                     if(propriedade is not null)
                     {
-                        propriedade.SetValue(implementacaoType, instancia.Value);
+                        propriedadeSetter.SetValue(implementacaoType, instancia.Value);
                     }
                 }
             }

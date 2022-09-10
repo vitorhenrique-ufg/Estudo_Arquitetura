@@ -7,7 +7,7 @@ namespace EM.Frameworks.IoC
         public void Execute(ref Dictionary<Type, object> mapaDeInstancia, Type key, Type type)
         {
             ConstructorInfo construtorSemParametros = type.GetConstructors().First(m => !m.GetParameters().Any());
-            object objetoInstanciado = construtorSemParametros.Invoke(Array.Empty<object>());
+            object objetoInstanciado = construtorSemParametros.Invoke(null);
 
             mapaDeInstancia.Add(key, objetoInstanciado);
         }
